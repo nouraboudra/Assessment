@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.7 on win32)" generated="2025-09-17T15:51:05.550694" rpa="false" schemaversion="5">
+<suite id="s1" name="Api" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\api">
+<suite id="s1-s1" name="Auth Api" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\api\auth_api.robot">
+<test id="s1-s1-t1" name="Test User Registration API Success" line="10">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-17T15:51:06.673103" level="INFO">${username} = uewgFWYDjt</msg>
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-17T15:51:06.672641" elapsed="0.000511"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:06.674186" level="INFO">${user_data} = {'username': 'uewgFWYDjt', 'password': 'Test123!', 'confirmPassword': 'Test123!'}</msg>
+<var>${user_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<arg>confirmPassword=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:06.673747" elapsed="0.000478"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:07.450627" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '81'} 
+ body=b'{"username": "uewgFWYDjt", "password": "Test123!", "confirmPassword": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:07.451078" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=201, reason=Created 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:07 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User registered successfully","user":{"username":"uewgFWYDjt"}} 
+ </msg>
+<msg time="2025-09-17T15:51:07.451603" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${user_data}</arg>
+<arg>headers=${DEFAULT_HEADERS}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:06.674733" elapsed="0.776965"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-09-17T15:51:07.454792" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-09-17T15:51:07.452898" elapsed="0.002102"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2025-09-17T15:51:07.458943" level="INFO">False</msg>
+<arg>${response.json()}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-09-17T15:51:07.456336" elapsed="0.002819"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()['message']}</arg>
+<arg>success</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-17T15:51:07.460443" elapsed="0.002052"/>
+</kw>
+<doc>Test successful user registration via API</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<status status="PASS" start="2025-09-17T15:51:06.670877" elapsed="0.792609"/>
+</test>
+<test id="s1-s1-t2" name="Test User Registration API Duplicate Username" line="28">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-17T15:51:07.467935" level="INFO">${username} = gjNaoUazVI</msg>
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-17T15:51:07.467175" elapsed="0.000853"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:07.470687" level="INFO">${user_data} = {'username': 'gjNaoUazVI', 'password': 'Test123!', 'confirmPassword': 'Test123!'}</msg>
+<var>${user_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<arg>confirmPassword=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:07.469240" elapsed="0.001593"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:08.196720" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '81', 'Content-Type': 'application/json'} 
+ body=b'{"username": "gjNaoUazVI", "password": "Test123!", "confirmPassword": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:08.197028" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=201, reason=Created 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User registered successfully","user":{"username":"gjNaoUazVI"}} 
+ </msg>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${user_data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:07.472689" elapsed="0.725116"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:08.837587" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '81', 'Content-Type': 'application/json'} 
+ body=b'{"username": "gjNaoUazVI", "password": "Test123!", "confirmPassword": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:08.837776" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=400, reason=Bad Request 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"User already exists"} 
+ </msg>
+<msg time="2025-09-17T15:51:08.838598" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${user_data}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:08.199121" elapsed="0.639620"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()['error']}</arg>
+<arg>already exists</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-17T15:51:08.840283" elapsed="0.002075"/>
+</kw>
+<doc>Test registration with existing username</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-09-17T15:51:07.465374" elapsed="1.378163"/>
+</test>
+<test id="s1-s1-t3" name="Test User Login API Success" line="48">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-17T15:51:08.848777" level="INFO">${username} = HfKSDSiAUy</msg>
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-17T15:51:08.847573" elapsed="0.001358"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:08.851234" level="INFO">${register_data} = {'username': 'HfKSDSiAUy', 'password': 'Test123!', 'confirmPassword': 'Test123!'}</msg>
+<var>${register_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<arg>confirmPassword=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:08.850414" elapsed="0.001860"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:09.511312" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '81', 'Content-Type': 'application/json'} 
+ body=b'{"username": "HfKSDSiAUy", "password": "Test123!", "confirmPassword": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:09.511500" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=201, reason=Created 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:09 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User registered successfully","user":{"username":"HfKSDSiAUy"}} 
+ </msg>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${register_data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:08.854402" elapsed="0.657355"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:09.513933" level="INFO">${login_data} = {'username': 'HfKSDSiAUy', 'password': 'Test123!'}</msg>
+<var>${login_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:09.513076" elapsed="0.000945"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:10.238809" level="INFO">POST Request : url=http://localhost:3000/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '50', 'Content-Type': 'application/json'} 
+ body=b'{"username": "HfKSDSiAUy", "password": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:10.239027" level="INFO">POST Response : url=http://localhost:3000/api/auth/login 
+ status=200, reason=OK 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:10 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"Login successful","user":{"id":"68cacaddd57e2f05ab545248","username":"HfKSDSiAUy"}} 
+ </msg>
+<msg time="2025-09-17T15:51:10.239841" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/login</arg>
+<arg>json=${login_data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:09.515233" elapsed="0.724713"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-09-17T15:51:10.242995" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.241252" elapsed="0.001925"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2025-09-17T15:51:10.246035" level="INFO">False</msg>
+<msg time="2025-09-17T15:51:10.246298" level="FAIL">Dictionary does not contain key 'token'.</msg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="FAIL" start="2025-09-17T15:51:10.244188" elapsed="0.002551">Dictionary does not contain key 'token'.</status>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${response.json()['token']}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-17T15:51:10.248117" elapsed="0.000167"/>
+</kw>
+<doc>Test successful user login</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<status status="FAIL" start="2025-09-17T15:51:08.846236" elapsed="1.406498">Dictionary does not contain key 'token'.</status>
+</test>
+<test id="s1-s1-t4" name="Test User Login API Invalid Credentials" line="73">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:10.259466" level="INFO">${login_data} = {'username': 'nonexistentuser', 'password': 'WrongPass123!'}</msg>
+<var>${login_data}</var>
+<arg>username=nonexistentuser</arg>
+<arg>password=WrongPass123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.258564" elapsed="0.000997"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:10.912162" level="INFO">POST Request : url=http://localhost:3000/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '60', 'Content-Type': 'application/json'} 
+ body=b'{"username": "nonexistentuser", "password": "WrongPass123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:10.912351" level="INFO">POST Response : url=http://localhost:3000/api/auth/login 
+ status=401, reason=Unauthorized 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:10 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Invalid username or password"} 
+ </msg>
+<msg time="2025-09-17T15:51:10.912785" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/login</arg>
+<arg>json=${login_data}</arg>
+<arg>expected_status=401</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.260800" elapsed="0.652109"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()['error']}</arg>
+<arg>Invalid</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.918299" elapsed="0.001760"/>
+</kw>
+<doc>Test login with wrong password</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-09-17T15:51:10.256382" elapsed="0.664595"/>
+</test>
+<test id="s1-s1-t5" name="Test Registration API Required Fields" line="87">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:10.924479" level="INFO">${user_data} = {'username': 'testuser'}</msg>
+<var>${user_data}</var>
+<arg>username=testuser</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.923972" elapsed="0.000585"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:10.968796" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/json'} 
+ body=b'{"username": "testuser"}' 
+ </msg>
+<msg time="2025-09-17T15:51:10.969071" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=400, reason=Bad Request 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:10 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Username and password are required"} 
+ </msg>
+<msg time="2025-09-17T15:51:10.969516" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${user_data}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.925380" elapsed="0.044235"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()['error']}</arg>
+<arg>required</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.971001" elapsed="0.001779"/>
+</kw>
+<doc>Test registration without required fields</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Negative</tag>
+<status status="PASS" start="2025-09-17T15:51:10.922728" elapsed="0.051097"/>
+</test>
+<test id="s1-s1-t6" name="Test Password Mismatch Registration" line="99">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T15:51:10.978429" level="INFO">${user_data} = {'username': 'testuser', 'password': 'Test123!', 'confirmPassword': 'Different123!'}</msg>
+<var>${user_data}</var>
+<arg>username=testuser</arg>
+<arg>password=Test123!</arg>
+<arg>confirmPassword=Different123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T15:51:10.977787" elapsed="0.000726"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T15:51:11.649169" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '84', 'Content-Type': 'application/json'} 
+ body=b'{"username": "testuser", "password": "Test123!", "confirmPassword": "Different123!"}' 
+ </msg>
+<msg time="2025-09-17T15:51:11.649456" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=201, reason=Created 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 14:51:11 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User registered successfully","user":{"username":"testuser"}} 
+ </msg>
+<msg time="2025-09-17T15:51:11.649946" level="FAIL">Url: http://localhost:3000/api/auth/register Expected status: 201 != 400</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${user_data}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request.</doc>
+<status status="FAIL" start="2025-09-17T15:51:10.980117" elapsed="0.678208">Url: http://localhost:3000/api/auth/register Expected status: 201 != 400</status>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()['error']}</arg>
+<arg>match</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-09-17T15:51:11.659550" elapsed="0.000099"/>
+</kw>
+<doc>Test registration with mismatched passwords</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Negative</tag>
+<status status="FAIL" start="2025-09-17T15:51:10.975984" elapsed="0.684723">Url: http://localhost:3000/api/auth/register Expected status: 201 != 400</status>
+</test>
+<doc>API Tests for Authentication Endpoints</doc>
+<status status="FAIL" start="2025-09-17T15:51:05.619748" elapsed="6.044656"/>
+</suite>
+<status status="FAIL" start="2025-09-17T15:51:05.555726" elapsed="6.114474"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="2" skip="0">API</stat>
+<stat pass="4" fail="2" skip="0">Auth</stat>
+<stat pass="1" fail="1" skip="0">Critical</stat>
+<stat pass="3" fail="1" skip="0">Negative</stat>
+<stat pass="1" fail="1" skip="0">Smoke</stat>
+</tag>
+<suite>
+<stat pass="4" fail="2" skip="0" id="s1" name="Api">Api</stat>
+<stat pass="4" fail="2" skip="0" id="s1-s1" name="Auth Api">Api.Auth Api</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-17T15:51:06.096905" level="WARN">Error in file 'C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\resources\keywords\common.robot' on line 37: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-17T15:51:06.098529" level="WARN">Error in file 'C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\resources\keywords\common.robot' on line 65: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>

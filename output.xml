@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.7 on win32)" generated="2025-09-17T15:42:41.521036" rpa="false" schemaversion="5">
+<suite id="s1" name="E2E" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\e2e">
+<suite id="s1-s1" name="Full Workflow" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\e2e\full_workflow.robot">
+<test id="s1-s1-t1" name="Test Complete User Journey" line="11">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:42:42.422879" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T15:42:42.422377" elapsed="1.793725"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T15:42:44.216613" elapsed="1.336926"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T15:42:45.553942" elapsed="0.002040"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T15:42:42.420553" elapsed="3.135610"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:42:45.558146" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T15:42:50.748380" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T15:42:50.748605" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T15:42:45.557216" elapsed="5.196185">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.754239" elapsed="0.000071"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T15:42:50.755233" elapsed="0.000104"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<var>@{todos}</var>
+<arg>Buy milk</arg>
+<arg>Call mom</arg>
+<arg>Finish report</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.756081" elapsed="0.000082"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.757420" elapsed="0.000083"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.757876" elapsed="0.000106"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${todo}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.758481" elapsed="0.000107"/>
+</kw>
+<var name="${todo}"/>
+<status status="NOT RUN" start="2025-09-17T15:42:50.757105" elapsed="0.001645"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="NOT RUN" start="2025-09-17T15:42:50.756850" elapsed="0.002062"/>
+</for>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<var>${checkbox}</var>
+<arg>xpath=//div[contains(text(),'Buy milk')]/..//input[@type='checkbox']</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.760260" elapsed="0.000082"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${checkbox}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.761150" elapsed="0.000094"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${LOGOUT_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.761877" elapsed="0.000070"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${LOGIN_LINK}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.762908" elapsed="0.000052"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>LOGIN</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.763545" elapsed="0.000045"/>
+</kw>
+<kw name="Login With Credentials" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T15:42:50.764368" elapsed="0.000092"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>${todo}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.765433" elapsed="0.000056"/>
+</kw>
+<var name="${todo}"/>
+<status status="NOT RUN" start="2025-09-17T15:42:50.765209" elapsed="0.000372"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="NOT RUN" start="2025-09-17T15:42:50.765004" elapsed="0.000664"/>
+</for>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<var>${todo_element}</var>
+<arg>xpath=//div[contains(text(),'Buy milk')]</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.766352" elapsed="0.000102"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${class}</var>
+<arg>${todo_element}</arg>
+<arg>class</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.766911" elapsed="0.000035"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${class}</arg>
+<arg>completed</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-09-17T15:42:50.767484" elapsed="0.000048"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T15:42:50.768319" elapsed="2.250723"/>
+</kw>
+<doc>Test complete user journey from registration to todo management</doc>
+<tag>Critical</tag>
+<tag>E2E</tag>
+<tag>Smoke</tag>
+<status status="FAIL" start="2025-09-17T15:42:42.418366" elapsed="10.601455">Link with locator 'REGISTER' not found.</status>
+</test>
+<test id="s1-s1-t2" name="Test Multi-Session Real-Time Sync" line="50">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:42:53.022626" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T15:42:53.022342" elapsed="3.026939"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T15:42:56.050561" elapsed="0.050602"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T15:42:56.102149" elapsed="0.002850"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T15:42:53.021880" elapsed="3.083417"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:42:56.107199" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T15:43:01.329281" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T15:43:01.329610" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T15:42:56.106719" elapsed="5.226647">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.334066" elapsed="0.000059"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T15:43:01.334761" elapsed="0.000056"/>
+</kw>
+<kw name="Get Browser Ids" owner="SeleniumLibrary">
+<var>${first_browser}</var>
+<doc>Returns index of all active browser as list.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.335494" elapsed="0.000068"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<arg>window.open('${BASE_URL}', '_blank')</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.336144" elapsed="0.000049"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.336714" elapsed="0.000047"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>LOGIN</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.337282" elapsed="0.000052"/>
+</kw>
+<kw name="Login With Credentials" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T15:43:01.337928" elapsed="0.000052"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${todo_text}</var>
+<arg>Real-time sync test</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.338709" elapsed="0.000054"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>${todo_text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.339249" elapsed="0.000043"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.339777" elapsed="0.000043"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>MAIN</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.340282" elapsed="0.000038"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${todo_text}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:01.340736" elapsed="0.000031"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T15:43:01.341319" elapsed="2.250589"/>
+</kw>
+<doc>Test real-time synchronization between multiple sessions</doc>
+<tag>Critical</tag>
+<tag>E2E</tag>
+<tag>WebSocket</tag>
+<status status="FAIL" start="2025-09-17T15:42:53.021098" elapsed="10.571365">Link with locator 'REGISTER' not found.</status>
+</test>
+<test id="s1-s1-t3" name="Test Data Validation Across Layers" line="79">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:43:03.595429" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T15:43:03.595150" elapsed="3.133616"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T15:43:06.729181" elapsed="0.061977"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T15:43:06.791611" elapsed="0.004097"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T15:43:03.594721" elapsed="3.201264"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:43:06.798062" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T15:43:08.579457" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bc8fc]
+	(No symbol) [0x0x7ff74520438d]
+	(No symbol) [0x0x7ff74523c9a2]
+	(No symbol) [0x0x7ff745237374]
+	(No symbol) [0x0x7ff74523642a]
+	(No symbol) [0x0x7ff745187075]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	(No symbol) [0x0x7ff74518602c]
+	GetHandleVerifier [0x0x7ff74582e408+4202328]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</msg>
+<msg time="2025-09-17T15:43:08.580801" level="FAIL">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
+  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bcada]
+	(No symbol) [0x0x7ff7451a8fcc]
+	(No symbol) [0x0x7ff7451a8f2c]
+	(No symbol) [0x0x7ff7451a7680]
+	(No symbol) [0x0x7ff7451a835b]
+	(No symbol) [0x0x7ff7451c2191]
+	(No symbol) [0x0x7ff7451c2cc7]
+	(No symbol) [0x0x7ff7451c770f]
+	(No symbol) [0x0x7ff7451c77cf]
+	(No symbol) [0x0x7ff745213d07]
+	(No symbol) [0x0x7ff74521471c]
+	(No symbol) [0x0x7ff745268247]
+	(No symbol) [0x0x7ff74523cb1f]
+	(No symbol) [0x0x7ff745264f8b]
+	(No symbol) [0x0x7ff74523c8b3]
+	(No symbol) [0x0x7ff745205272]
+	(No symbol) [0x0x7ff745206043]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	GetHandleVerifier [0x0x7ff745448ac4+116244]
+	GetHandleVerifier [0x0x7ff745448c79+116681]
+	GetHandleVerifier [0x0x7ff74542f058+11176]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T15:43:06.797579" elapsed="1.790058">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
+  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bcada]
+	(No symbol) [0x0x7ff7451a8fcc]
+	(No symbol) [0x0x7ff7451a8f2c]
+	(No symbol) [0x0x7ff7451a7680]
+	(No symbol) [0x0x7ff7451a835b]
+	(No symbol) [0x0x7ff7451c2191]
+	(No symbol) [0x0x7ff7451c2cc7]
+	(No symbol) [0x0x7ff7451c770f]
+	(No symbol) [0x0x7ff7451c77cf]
+	(No symbol) [0x0x7ff745213d07]
+	(No symbol) [0x0x7ff74521471c]
+	(No symbol) [0x0x7ff745268247]
+	(No symbol) [0x0x7ff74523cb1f]
+	(No symbol) [0x0x7ff745264f8b]
+	(No symbol) [0x0x7ff74523c8b3]
+	(No symbol) [0x0x7ff745205272]
+	(No symbol) [0x0x7ff745206043]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	GetHandleVerifier [0x0x7ff745448ac4+116244]
+	GetHandleVerifier [0x0x7ff745448c79+116681]
+	GetHandleVerifier [0x0x7ff74542f058+11176]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.588832" elapsed="0.000068"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>required</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.589869" elapsed="0.000104"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${invalid_data}</var>
+<arg>username=</arg>
+<arg>password=</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.590766" elapsed="0.000078"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<var>${response}</var>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${invalid_data}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.591477" elapsed="0.000088"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.592410" elapsed="0.000067"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.593398" elapsed="0.000088"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<arg>${PASSWORD_INPUT}</arg>
+<arg>Test123!</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.594295" elapsed="0.000074"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<arg>${CONFIRM_PASSWORD}</arg>
+<arg>Test123!</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.595216" elapsed="0.000096"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.596663" elapsed="0.000120"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.597615" elapsed="0.000067"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${xss_attempt}</var>
+<arg>&lt;script&gt;alert('XSS')&lt;/script&gt;</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.598453" elapsed="0.000112"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>${xss_attempt}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.599738" elapsed="0.000116"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.601030" elapsed="0.000189"/>
+</kw>
+<kw name="Get Source" owner="SeleniumLibrary">
+<var>${source}</var>
+<doc>Returns the entire HTML source of the current page or frame.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.602051" elapsed="0.000066"/>
+</kw>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${source}</arg>
+<arg>&lt;script&gt;alert</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:08.602923" elapsed="0.000072"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T15:43:08.603985" elapsed="2.024071"/>
+</kw>
+<doc>Test data validation in both UI and API</doc>
+<tag>E2E</tag>
+<tag>Validation</tag>
+<status status="FAIL" start="2025-09-17T15:43:03.593966" elapsed="7.034700">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
+  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bcada]
+	(No symbol) [0x0x7ff7451a8fcc]
+	(No symbol) [0x0x7ff7451a8f2c]
+	(No symbol) [0x0x7ff7451a7680]
+	(No symbol) [0x0x7ff7451a835b]
+	(No symbol) [0x0x7ff7451c2191]
+	(No symbol) [0x0x7ff7451c2cc7]
+	(No symbol) [0x0x7ff7451c770f]
+	(No symbol) [0x0x7ff7451c77cf]
+	(No symbol) [0x0x7ff745213d07]
+	(No symbol) [0x0x7ff74521471c]
+	(No symbol) [0x0x7ff745268247]
+	(No symbol) [0x0x7ff74523cb1f]
+	(No symbol) [0x0x7ff745264f8b]
+	(No symbol) [0x0x7ff74523c8b3]
+	(No symbol) [0x0x7ff745205272]
+	(No symbol) [0x0x7ff745206043]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	GetHandleVerifier [0x0x7ff745448ac4+116244]
+	GetHandleVerifier [0x0x7ff745448c79+116681]
+	GetHandleVerifier [0x0x7ff74542f058+11176]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</status>
+</test>
+<test id="s1-s1-t4" name="Test Performance Under Load" line="111">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:43:10.631446" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T15:43:10.631136" elapsed="2.870898"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T15:43:13.502482" elapsed="0.061884"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T15:43:13.564692" elapsed="0.002256"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T15:43:10.630651" elapsed="2.936543"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:43:13.569191" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T15:43:15.253315" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bc8fc]
+	(No symbol) [0x0x7ff74520438d]
+	(No symbol) [0x0x7ff74523c9a2]
+	(No symbol) [0x0x7ff745237374]
+	(No symbol) [0x0x7ff74523642a]
+	(No symbol) [0x0x7ff745187075]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	(No symbol) [0x0x7ff74518602c]
+	GetHandleVerifier [0x0x7ff74582e408+4202328]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</msg>
+<msg time="2025-09-17T15:43:15.254904" level="FAIL">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
+  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bcada]
+	(No symbol) [0x0x7ff7451a8fcc]
+	(No symbol) [0x0x7ff7451a8f2c]
+	(No symbol) [0x0x7ff7451a7680]
+	(No symbol) [0x0x7ff7451a835b]
+	(No symbol) [0x0x7ff7451c2191]
+	(No symbol) [0x0x7ff7451c2cc7]
+	(No symbol) [0x0x7ff7451c770f]
+	(No symbol) [0x0x7ff7451c77cf]
+	(No symbol) [0x0x7ff745213d07]
+	(No symbol) [0x0x7ff74521471c]
+	(No symbol) [0x0x7ff745268247]
+	(No symbol) [0x0x7ff74523cb1f]
+	(No symbol) [0x0x7ff745264f8b]
+	(No symbol) [0x0x7ff74523c8b3]
+	(No symbol) [0x0x7ff745205272]
+	(No symbol) [0x0x7ff745206043]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	GetHandleVerifier [0x0x7ff745448ac4+116244]
+	GetHandleVerifier [0x0x7ff745448c79+116681]
+	GetHandleVerifier [0x0x7ff74542f058+11176]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T15:43:13.568386" elapsed="1.690443">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
+  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bcada]
+	(No symbol) [0x0x7ff7451a8fcc]
+	(No symbol) [0x0x7ff7451a8f2c]
+	(No symbol) [0x0x7ff7451a7680]
+	(No symbol) [0x0x7ff7451a835b]
+	(No symbol) [0x0x7ff7451c2191]
+	(No symbol) [0x0x7ff7451c2cc7]
+	(No symbol) [0x0x7ff7451c770f]
+	(No symbol) [0x0x7ff7451c77cf]
+	(No symbol) [0x0x7ff745213d07]
+	(No symbol) [0x0x7ff74521471c]
+	(No symbol) [0x0x7ff745268247]
+	(No symbol) [0x0x7ff74523cb1f]
+	(No symbol) [0x0x7ff745264f8b]
+	(No symbol) [0x0x7ff74523c8b3]
+	(No symbol) [0x0x7ff745205272]
+	(No symbol) [0x0x7ff745206043]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	GetHandleVerifier [0x0x7ff745448ac4+116244]
+	GetHandleVerifier [0x0x7ff745448c79+116681]
+	GetHandleVerifier [0x0x7ff74542f058+11176]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.259594" elapsed="0.000065"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T15:43:15.260413" elapsed="0.000072"/>
+</kw>
+<kw name="Get Time" owner="BuiltIn">
+<var>${start_time}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.261147" elapsed="0.000086"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>Todo item ${i}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.262029" elapsed="0.000043"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.262287" elapsed="0.000040"/>
+</kw>
+<var name="${i}"/>
+<status status="NOT RUN" start="2025-09-17T15:43:15.261832" elapsed="0.000558"/>
+</iter>
+<var>${i}</var>
+<value>50</value>
+<status status="NOT RUN" start="2025-09-17T15:43:15.261697" elapsed="0.000764"/>
+</for>
+<kw name="Get Time" owner="BuiltIn">
+<var>${end_time}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.263294" elapsed="0.000112"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${duration}</var>
+<arg>${end_time} - ${start_time}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.264140" elapsed="0.000070"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Added 50 todos in ${duration} seconds</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.264927" elapsed="0.000071"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${duration} &lt; 30</arg>
+<arg>Adding todos took too long</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.265852" elapsed="0.000072"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<var>${count}</var>
+<arg>${TODO_ITEM}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.266841" elapsed="0.000072"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${count}</arg>
+<arg>50</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:15.269336" elapsed="0.000103"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T15:43:15.270536" elapsed="2.018165"/>
+</kw>
+<doc>Test application performance with many todos</doc>
+<tag>E2E</tag>
+<tag>Performance</tag>
+<status status="FAIL" start="2025-09-17T15:43:10.629823" elapsed="6.659434">InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
+  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bcada]
+	(No symbol) [0x0x7ff7451a8fcc]
+	(No symbol) [0x0x7ff7451a8f2c]
+	(No symbol) [0x0x7ff7451a7680]
+	(No symbol) [0x0x7ff7451a835b]
+	(No symbol) [0x0x7ff7451c2191]
+	(No symbol) [0x0x7ff7451c2cc7]
+	(No symbol) [0x0x7ff7451c770f]
+	(No symbol) [0x0x7ff7451c77cf]
+	(No symbol) [0x0x7ff745213d07]
+	(No symbol) [0x0x7ff74521471c]
+	(No symbol) [0x0x7ff745268247]
+	(No symbol) [0x0x7ff74523cb1f]
+	(No symbol) [0x0x7ff745264f8b]
+	(No symbol) [0x0x7ff74523c8b3]
+	(No symbol) [0x0x7ff745205272]
+	(No symbol) [0x0x7ff745206043]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	GetHandleVerifier [0x0x7ff745448ac4+116244]
+	GetHandleVerifier [0x0x7ff745448c79+116681]
+	GetHandleVerifier [0x0x7ff74542f058+11176]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</status>
+</test>
+<test id="s1-s1-t5" name="Test Error Recovery" line="137">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T15:43:17.292143" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<msg time="2025-09-17T15:43:17.485672" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-09-17T15:43:17.485921" level="FAIL">NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="FAIL" start="2025-09-17T15:43:17.291838" elapsed="0.270502">NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+</status>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:17.562711" elapsed="0.000050"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="NOT RUN" start="2025-09-17T15:43:17.562919" elapsed="0.000036"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="FAIL" start="2025-09-17T15:43:17.291438" elapsed="0.271682">NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+</status>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T15:43:17.563953" elapsed="0.000254"/>
+</kw>
+<doc>Test application error handling and recovery</doc>
+<tag>E2E</tag>
+<tag>ErrorHandling</tag>
+<status status="FAIL" start="2025-09-17T15:43:17.290684" elapsed="0.273922">Setup failed:
+NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+</status>
+</test>
+<doc>End-to-End Tests for Complete User Workflows</doc>
+<status status="FAIL" start="2025-09-17T15:42:41.583501" elapsed="35.982568"/>
+</suite>
+<status status="FAIL" start="2025-09-17T15:42:41.525197" elapsed="36.042534"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="5" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="2" skip="0">Critical</stat>
+<stat pass="0" fail="5" skip="0">E2E</stat>
+<stat pass="0" fail="1" skip="0">ErrorHandling</stat>
+<stat pass="0" fail="1" skip="0">Performance</stat>
+<stat pass="0" fail="1" skip="0">Smoke</stat>
+<stat pass="0" fail="1" skip="0">Validation</stat>
+<stat pass="0" fail="1" skip="0">WebSocket</stat>
+</tag>
+<suite>
+<stat pass="0" fail="5" skip="0" id="s1" name="E2E">E2E</stat>
+<stat pass="0" fail="5" skip="0" id="s1-s1" name="Full Workflow">E2E.Full Workflow</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-17T15:42:42.388204" level="WARN">Error in file 'C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\resources\keywords\common.robot' on line 37: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-17T15:42:42.389530" level="WARN">Error in file 'C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\resources\keywords\common.robot' on line 65: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-17T15:43:08.579457" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bc8fc]
+	(No symbol) [0x0x7ff74520438d]
+	(No symbol) [0x0x7ff74523c9a2]
+	(No symbol) [0x0x7ff745237374]
+	(No symbol) [0x0x7ff74523642a]
+	(No symbol) [0x0x7ff745187075]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	(No symbol) [0x0x7ff74518602c]
+	GetHandleVerifier [0x0x7ff74582e408+4202328]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</msg>
+<msg time="2025-09-17T15:43:15.253315" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff74543fca5+79861]
+	GetHandleVerifier [0x0x7ff74543fd00+79952]
+	(No symbol) [0x0x7ff7451bc8fc]
+	(No symbol) [0x0x7ff74520438d]
+	(No symbol) [0x0x7ff74523c9a2]
+	(No symbol) [0x0x7ff745237374]
+	(No symbol) [0x0x7ff74523642a]
+	(No symbol) [0x0x7ff745187075]
+	GetHandleVerifier [0x0x7ff7456fb9dd+2946349]
+	GetHandleVerifier [0x0x7ff7456f5c5a+2922410]
+	GetHandleVerifier [0x0x7ff7457159e7+3052855]
+	GetHandleVerifier [0x0x7ff74545aa8e+189918]
+	GetHandleVerifier [0x0x7ff745462a2f+222591]
+	(No symbol) [0x0x7ff74518602c]
+	GetHandleVerifier [0x0x7ff74582e408+4202328]
+	BaseThreadInitThunk [0x0x7ffaba10259d+29]
+	RtlUserThreadStart [0x0x7ffaba7eaf78+40]
+</msg>
+</errors>
+</robot>

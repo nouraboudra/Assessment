@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.7 on win32)" generated="2025-09-17T16:22:32.445303" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests">
+<suite id="s1-s1" name="Api" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\api">
+<suite id="s1-s1-s1" name="Auth Api" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\api\auth_api.robot">
+<test id="s1-s1-s1-t1" name="Test User Registration API Success" line="10">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-17T16:22:33.458483" level="INFO">${username} = dpNkrCEQAa</msg>
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-17T16:22:33.457837" elapsed="0.000726"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T16:22:33.460194" level="INFO">${user_data} = {'username': 'dpNkrCEQAa', 'password': 'Test123!', 'confirmPassword': 'Test123!'}</msg>
+<var>${user_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<arg>confirmPassword=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T16:22:33.459576" elapsed="0.000717"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T16:22:34.955141" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '81'} 
+ body=b'{"username": "dpNkrCEQAa", "password": "Test123!", "confirmPassword": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T16:22:34.955500" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=201, reason=Created 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 15:22:34 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User registered successfully","user":{"username":"dpNkrCEQAa"}} 
+ </msg>
+<msg time="2025-09-17T16:22:34.955904" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${user_data}</arg>
+<arg>headers=${DEFAULT_HEADERS}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T16:22:33.461120" elapsed="1.494875"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-09-17T16:22:34.957900" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-09-17T16:22:34.956772" elapsed="0.001245"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2025-09-17T16:22:34.960455" level="INFO">False</msg>
+<arg>${response.json()}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-09-17T16:22:34.958804" elapsed="0.001792"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()['message']}</arg>
+<arg>success</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-17T16:22:34.961471" elapsed="0.001275"/>
+</kw>
+<doc>Test successful user registration via API</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<status status="PASS" start="2025-09-17T16:22:33.454473" elapsed="1.508983"/>
+</test>
+<test id="s1-s1-s1-t2" name="Test User Login API Success" line="48">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-09-17T16:22:34.966788" level="INFO">${username} = PrAXqCpVZw</msg>
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-09-17T16:22:34.966281" elapsed="0.000566"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T16:22:34.968130" level="INFO">${register_data} = {'username': 'PrAXqCpVZw', 'password': 'Test123!', 'confirmPassword': 'Test123!'}</msg>
+<var>${register_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<arg>confirmPassword=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T16:22:34.967523" elapsed="0.000683"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T16:22:35.656336" level="INFO">POST Request : url=http://localhost:3000/api/auth/register 
+ path_url=/api/auth/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '81', 'Content-Type': 'application/json'} 
+ body=b'{"username": "PrAXqCpVZw", "password": "Test123!", "confirmPassword": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T16:22:35.656472" level="INFO">POST Response : url=http://localhost:3000/api/auth/register 
+ status=201, reason=Created 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 15:22:35 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User registered successfully","user":{"username":"PrAXqCpVZw"}} 
+ </msg>
+<arg>${API_URL}/auth/register</arg>
+<arg>json=${register_data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T16:22:34.969107" elapsed="0.687460"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-17T16:22:35.657593" level="INFO">${login_data} = {'username': 'PrAXqCpVZw', 'password': 'Test123!'}</msg>
+<var>${login_data}</var>
+<arg>username=${username}</arg>
+<arg>password=Test123!</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-17T16:22:35.657198" elapsed="0.000435"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-17T16:22:36.596092" level="INFO">POST Request : url=http://localhost:3000/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '50', 'Content-Type': 'application/json'} 
+ body=b'{"username": "PrAXqCpVZw", "password": "Test123!"}' 
+ </msg>
+<msg time="2025-09-17T16:22:36.596267" level="INFO">POST Response : url=http://localhost:3000/api/auth/login 
+ status=200, reason=OK 
+ headers={'vary': 'RSC, Next-Router-State-Tree, Next-Router-Prefetch', 'content-type': 'application/json', 'Date': 'Wed, 17 Sep 2025 15:22:36 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"Login successful","user":{"id":"68cad23bd57e2f05ab54524b","username":"PrAXqCpVZw"}} 
+ </msg>
+<msg time="2025-09-17T16:22:36.596831" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${API_URL}/auth/login</arg>
+<arg>json=${login_data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-17T16:22:35.658081" elapsed="0.938839"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-09-17T16:22:36.598813" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-09-17T16:22:36.597724" elapsed="0.001203"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2025-09-17T16:22:36.601279" level="INFO">False</msg>
+<msg time="2025-09-17T16:22:36.602149" level="FAIL">Dictionary does not contain key 'token'.</msg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="FAIL" start="2025-09-17T16:22:36.599680" elapsed="0.002899">Dictionary does not contain key 'token'.</status>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${response.json()['token']}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:36.603689" elapsed="0.000096"/>
+</kw>
+<doc>Test successful user login</doc>
+<tag>API</tag>
+<tag>Auth</tag>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<status status="FAIL" start="2025-09-17T16:22:34.965160" elapsed="1.639751">Dictionary does not contain key 'token'.</status>
+</test>
+<doc>API Tests for Authentication Endpoints</doc>
+<status status="FAIL" start="2025-09-17T16:22:32.504932" elapsed="4.101806"/>
+</suite>
+<status status="FAIL" start="2025-09-17T16:22:32.501749" elapsed="4.107148"/>
+</suite>
+<suite id="s1-s2" name="E2E" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\e2e">
+<suite id="s1-s2-s1" name="Full Workflow" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\e2e\full_workflow.robot">
+<test id="s1-s2-s1-t1" name="Test Complete User Journey" line="11">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:22:36.638216" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:22:36.637585" elapsed="3.355990"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:22:39.994157" elapsed="0.045393"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:22:40.040169" elapsed="0.002804"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:22:36.636597" elapsed="3.406650"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:22:40.044519" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:22:45.273473" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:22:45.273700" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:22:40.044013" elapsed="5.234150">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.279091" elapsed="0.000084"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:22:45.279981" elapsed="0.000080"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<var>@{todos}</var>
+<arg>Buy milk</arg>
+<arg>Call mom</arg>
+<arg>Finish report</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.280643" elapsed="0.000062"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.281783" elapsed="0.000063"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.282143" elapsed="0.000060"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${todo}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.282405" elapsed="0.000042"/>
+</kw>
+<var name="${todo}"/>
+<status status="NOT RUN" start="2025-09-17T16:22:45.281511" elapsed="0.001006"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="NOT RUN" start="2025-09-17T16:22:45.281257" elapsed="0.001344"/>
+</for>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<var>${checkbox}</var>
+<arg>xpath=//div[contains(text(),'Buy milk')]/..//input[@type='checkbox']</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.283197" elapsed="0.000043"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${checkbox}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.283825" elapsed="0.000041"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${LOGOUT_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.284423" elapsed="0.000043"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${LOGIN_LINK}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.285222" elapsed="0.000044"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>LOGIN</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.285773" elapsed="0.000036"/>
+</kw>
+<kw name="Login With Credentials" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:22:45.286321" elapsed="0.000039"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>${todo}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.287174" elapsed="0.000036"/>
+</kw>
+<var name="${todo}"/>
+<status status="NOT RUN" start="2025-09-17T16:22:45.286997" elapsed="0.000271"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="NOT RUN" start="2025-09-17T16:22:45.286834" elapsed="0.000491"/>
+</for>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<var>${todo_element}</var>
+<arg>xpath=//div[contains(text(),'Buy milk')]</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.287926" elapsed="0.000044"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${class}</var>
+<arg>${todo_element}</arg>
+<arg>class</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.288781" elapsed="0.000099"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${class}</arg>
+<arg>completed</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:45.289729" elapsed="0.000096"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T16:22:45.290994" elapsed="2.264733"/>
+</kw>
+<doc>Test complete user journey from registration to todo management</doc>
+<tag>Critical</tag>
+<tag>E2E</tag>
+<tag>Smoke</tag>
+<status status="FAIL" start="2025-09-17T16:22:36.634597" elapsed="10.921801">Link with locator 'REGISTER' not found.</status>
+</test>
+<test id="s1-s2-s1-t2" name="Test Multi-Session Real-Time Sync" line="50">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:22:47.559326" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:22:47.558989" elapsed="1.743758"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:22:49.303199" elapsed="1.225644"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:22:50.529304" elapsed="0.002965"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:22:47.558378" elapsed="2.974127"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:22:50.534061" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:22:55.771533" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:22:55.771736" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:22:50.533641" elapsed="5.239892">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.774221" elapsed="0.000042"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:22:55.774879" elapsed="0.000069"/>
+</kw>
+<kw name="Get Browser Ids" owner="SeleniumLibrary">
+<var>${first_browser}</var>
+<doc>Returns index of all active browser as list.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.775885" elapsed="0.000099"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<arg>window.open('${BASE_URL}', '_blank')</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.776571" elapsed="0.000043"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.777059" elapsed="0.000032"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>LOGIN</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.777530" elapsed="0.000033"/>
+</kw>
+<kw name="Login With Credentials" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:22:55.778056" elapsed="0.000040"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${todo_text}</var>
+<arg>Real-time sync test</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.778744" elapsed="0.000035"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>${todo_text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.779220" elapsed="0.000032"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.779717" elapsed="0.000034"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>MAIN</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.780185" elapsed="0.000030"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${todo_text}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T16:22:55.780634" elapsed="0.000033"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-17T16:22:55.781221" elapsed="2.228645"/>
+</kw>
+<doc>Test real-time synchronization between multiple sessions</doc>
+<tag>Critical</tag>
+<tag>E2E</tag>
+<tag>WebSocket</tag>
+<status status="FAIL" start="2025-09-17T16:22:47.557612" elapsed="10.453069">Link with locator 'REGISTER' not found.</status>
+</test>
+<doc>End-to-End Tests for Complete User Workflows</doc>
+<status status="FAIL" start="2025-09-17T16:22:36.613468" elapsed="21.398484"/>
+</suite>
+<status status="FAIL" start="2025-09-17T16:22:36.610580" elapsed="21.402932"/>
+</suite>
+<suite id="s1-s3" name="Ui" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\ui">
+<suite id="s1-s3-s1" name="Auth Ui" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\ui\auth_ui.robot">
+<test id="s1-s3-s1-t1" name="Test User Registration UI Success" line="10">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:22:58.028435" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:22:58.028162" elapsed="2.802208"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:23:00.830810" elapsed="0.056881"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:23:00.888190" elapsed="0.003923"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:22:58.027755" elapsed="2.864567"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:00.893803" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:23:06.111411" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:23:06.111628" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:23:00.893233" elapsed="5.220162">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.114266" elapsed="0.000088"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.115090" elapsed="0.000083"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${USERNAME_INPUT}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.115810" elapsed="0.000070"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<arg>${PASSWORD_INPUT}</arg>
+<arg>Test123!</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.116583" elapsed="0.000047"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<arg>${CONFIRM_PASSWORD}</arg>
+<arg>Test123!</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.117269" elapsed="0.000042"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.117785" elapsed="0.000033"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.118255" elapsed="0.000033"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>ToDo</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.118961" elapsed="0.000032"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<arg>${LOGOUT_BUTTON}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:06.119397" elapsed="0.000031"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-17T16:23:06.119997" elapsed="2.239554"/>
+</kw>
+<doc>Test successful user registration through UI</doc>
+<tag>Auth</tag>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<tag>UI</tag>
+<status status="FAIL" start="2025-09-17T16:22:58.026682" elapsed="10.333805">Link with locator 'REGISTER' not found.</status>
+</test>
+<test id="s1-s3-s1-t2" name="Test User Login UI Success" line="29">
+<kw name="Open Todo Application" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:08.363333" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:23:08.363063" elapsed="2.819837"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:23:11.183247" elapsed="0.054609"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:23:11.238244" elapsed="0.005223"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:23:08.362701" elapsed="2.880977"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:11.245608" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:23:16.453249" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:23:16.453500" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:23:11.245207" elapsed="5.210679">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:16.459468" elapsed="0.000068"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:23:16.460634" elapsed="0.000114"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${LOGOUT_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:16.461982" elapsed="0.000121"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<arg>LOGIN</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:16.462804" elapsed="0.000065"/>
+</kw>
+<kw name="Login With Credentials" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:23:16.463891" elapsed="0.000108"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>ToDo</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:16.464833" elapsed="0.000078"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<arg>${TODO_INPUT}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:16.465658" elapsed="0.000103"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-17T16:23:16.466966" elapsed="2.252946"/>
+</kw>
+<doc>Test successful user login through UI</doc>
+<tag>Auth</tag>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<tag>UI</tag>
+<status status="FAIL" start="2025-09-17T16:23:08.362045" elapsed="10.358678">Link with locator 'REGISTER' not found.</status>
+</test>
+<doc>UI Tests for Authentication</doc>
+<status status="FAIL" start="2025-09-17T16:22:58.017195" elapsed="20.704805"/>
+</suite>
+<suite id="s1-s3-s2" name="Todos Ui" source="C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\tests\ui\todos_ui.robot">
+<test id="s1-s3-s2-t1" name="Test Add Todo Item" line="18">
+<kw name="Setup Todo Test" type="SETUP">
+<kw name="Open Todo Application" owner="common">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:18.734268" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:23:18.734037" elapsed="2.698357"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:23:21.432778" elapsed="0.066436"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:23:21.499724" elapsed="0.003002"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:23:18.733747" elapsed="2.769242"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:21.503682" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:23:26.711651" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:23:26.711942" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:23:21.503302" elapsed="5.211600">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:26.715257" elapsed="0.000054"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:23:26.715661" elapsed="0.000059"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<arg>${TEST_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:26.715915" elapsed="0.000045"/>
+</kw>
+<status status="FAIL" start="2025-09-17T16:23:18.733452" elapsed="7.982888">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-17T16:23:26.717189" elapsed="2.249978"/>
+</kw>
+<doc>Test adding a new todo item</doc>
+<tag>Critical</tag>
+<tag>Smoke</tag>
+<tag>Todo</tag>
+<tag>UI</tag>
+<status status="FAIL" start="2025-09-17T16:23:18.732877" elapsed="10.235022">Setup failed:
+Link with locator 'REGISTER' not found.</status>
+</test>
+<test id="s1-s3-s2-t2" name="Test Mark Todo Complete" line="48">
+<kw name="Setup Todo Test" type="SETUP">
+<kw name="Open Todo Application" owner="common">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:28.971877" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:23:28.971513" elapsed="1.862817"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:23:30.834706" elapsed="1.093612"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:23:31.928660" elapsed="0.002268"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:23:28.971128" elapsed="2.959986"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:31.931694" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:23:37.142098" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:23:37.142313" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:23:31.931392" elapsed="5.212678">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:37.144338" elapsed="0.000038"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:23:37.144605" elapsed="0.000038"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<arg>${TEST_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:37.144778" elapsed="0.000030"/>
+</kw>
+<status status="FAIL" start="2025-09-17T16:23:28.970657" elapsed="8.174295">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-17T16:23:37.145643" elapsed="2.239990"/>
+</kw>
+<doc>Test marking a todo as complete</doc>
+<tag>Critical</tag>
+<tag>Todo</tag>
+<tag>UI</tag>
+<status status="FAIL" start="2025-09-17T16:23:28.969722" elapsed="10.416534">Setup failed:
+Link with locator 'REGISTER' not found.</status>
+</test>
+<test id="s1-s3-s2-t3" name="Test Delete Todo" line="66">
+<kw name="Setup Todo Test" type="SETUP">
+<kw name="Open Todo Application" owner="common">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:39.389112" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-17T16:23:39.388808" elapsed="2.877962"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-17T16:23:42.267308" elapsed="0.064180"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${IMPLICIT_WAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-17T16:23:42.331855" elapsed="0.003689"/>
+</kw>
+<doc>Opens the browser and navigates to the application</doc>
+<status status="PASS" start="2025-09-17T16:23:39.388452" elapsed="2.947353"/>
+</kw>
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-09-17T16:23:42.336505" level="INFO">Clicking link 'REGISTER'.</msg>
+<msg time="2025-09-17T16:23:47.526285" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-09-17T16:23:47.526528" level="FAIL">Link with locator 'REGISTER' not found.</msg>
+<arg>REGISTER</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-09-17T16:23:42.336110" elapsed="5.192434">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Generate Random String" owner="String">
+<var>${username}</var>
+<arg>10</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:47.528801" elapsed="0.000036"/>
+</kw>
+<kw name="Register New User" owner="common">
+<arg>${username}</arg>
+<arg>Test123!</arg>
+<status status="NOT RUN" start="2025-09-17T16:23:47.529069" elapsed="0.000064"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<arg>${TEST_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" start="2025-09-17T16:23:47.529292" elapsed="0.000031"/>
+</kw>
+<status status="FAIL" start="2025-09-17T16:23:39.388106" elapsed="8.141360">Link with locator 'REGISTER' not found.</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-17T16:23:47.530437" elapsed="2.258492"/>
+</kw>
+<doc>Test deleting a todo item</doc>
+<tag>Critical</tag>
+<tag>Todo</tag>
+<tag>UI</tag>
+<status status="FAIL" start="2025-09-17T16:23:39.387437" elapsed="10.402061">Setup failed:
+Link with locator 'REGISTER' not found.</status>
+</test>
+<doc>UI Tests for Todo Functionality</doc>
+<status status="FAIL" start="2025-09-17T16:23:18.723389" elapsed="31.067665"/>
+</suite>
+<status status="FAIL" start="2025-09-17T16:22:58.014803" elapsed="51.778454"/>
+</suite>
+<status status="FAIL" start="2025-09-17T16:22:32.447648" elapsed="77.347815"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="8" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="1" skip="0">API</stat>
+<stat pass="1" fail="3" skip="0">Auth</stat>
+<stat pass="1" fail="8" skip="0">Critical</stat>
+<stat pass="0" fail="2" skip="0">E2E</stat>
+<stat pass="1" fail="5" skip="0">Smoke</stat>
+<stat pass="0" fail="3" skip="0">Todo</stat>
+<stat pass="0" fail="5" skip="0">UI</stat>
+<stat pass="0" fail="1" skip="0">WebSocket</stat>
+</tag>
+<suite>
+<stat pass="1" fail="8" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="1" skip="0" id="s1-s1" name="Api">Tests.Api</stat>
+<stat pass="1" fail="1" skip="0" id="s1-s1-s1" name="Auth Api">Tests.Api.Auth Api</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s2" name="E2E">Tests.E2E</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s2-s1" name="Full Workflow">Tests.E2E.Full Workflow</stat>
+<stat pass="0" fail="5" skip="0" id="s1-s3" name="Ui">Tests.Ui</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s3-s1" name="Auth Ui">Tests.Ui.Auth Ui</stat>
+<stat pass="0" fail="3" skip="0" id="s1-s3-s2" name="Todos Ui">Tests.Ui.Todos Ui</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-17T16:22:32.895633" level="WARN">Error in file 'C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\resources\keywords\common.robot' on line 37: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-17T16:22:32.897224" level="WARN">Error in file 'C:\Users\LENOVO 495s\PycharmProjects\todo-app-rf-tests\resources\keywords\common.robot' on line 65: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>

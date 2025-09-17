@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Api" tests="6" errors="0" failures="2" skipped="0" time="6.114" timestamp="2025-09-17T15:51:05.555726">
+<testsuite name="Auth Api" tests="6" errors="0" failures="2" skipped="0" time="6.045" timestamp="2025-09-17T15:51:05.619748">
+<testcase classname="Api.Auth Api" name="Test User Registration API Success" time="0.793">
+</testcase>
+<testcase classname="Api.Auth Api" name="Test User Registration API Duplicate Username" time="1.378">
+</testcase>
+<testcase classname="Api.Auth Api" name="Test User Login API Success" time="1.406">
+<failure message="Dictionary does not contain key 'token'." type="AssertionError"/>
+</testcase>
+<testcase classname="Api.Auth Api" name="Test User Login API Invalid Credentials" time="0.665">
+</testcase>
+<testcase classname="Api.Auth Api" name="Test Registration API Required Fields" time="0.051">
+</testcase>
+<testcase classname="Api.Auth Api" name="Test Password Mismatch Registration" time="0.685">
+<failure message="Url: http://localhost:3000/api/auth/register Expected status: 201 != 400" type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="API Tests for Authentication Endpoints"/>
+</properties>
+</testsuite>
+</testsuite>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Tests" tests="9" errors="0" failures="8" skipped="0" time="77.348" timestamp="2025-09-17T16:22:32.447648">
+<testsuite name="Api" tests="2" errors="0" failures="1" skipped="0" time="4.107" timestamp="2025-09-17T16:22:32.501749">
+<testsuite name="Auth Api" tests="2" errors="0" failures="1" skipped="0" time="4.102" timestamp="2025-09-17T16:22:32.504932">
+<testcase classname="Tests.Api.Auth Api" name="Test User Registration API Success" time="1.509">
+</testcase>
+<testcase classname="Tests.Api.Auth Api" name="Test User Login API Success" time="1.640">
+<failure message="Dictionary does not contain key 'token'." type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="API Tests for Authentication Endpoints"/>
+</properties>
+</testsuite>
+</testsuite>
+<testsuite name="E2E" tests="2" errors="0" failures="2" skipped="0" time="21.403" timestamp="2025-09-17T16:22:36.610580">
+<testsuite name="Full Workflow" tests="2" errors="0" failures="2" skipped="0" time="21.398" timestamp="2025-09-17T16:22:36.613468">
+<testcase classname="Tests.E2E.Full Workflow" name="Test Complete User Journey" time="10.922">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Tests.E2E.Full Workflow" name="Test Multi-Session Real-Time Sync" time="10.453">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="End-to-End Tests for Complete User Workflows"/>
+</properties>
+</testsuite>
+</testsuite>
+<testsuite name="Ui" tests="5" errors="0" failures="5" skipped="0" time="51.778" timestamp="2025-09-17T16:22:58.014803">
+<testsuite name="Auth Ui" tests="2" errors="0" failures="2" skipped="0" time="20.705" timestamp="2025-09-17T16:22:58.017195">
+<testcase classname="Tests.Ui.Auth Ui" name="Test User Registration UI Success" time="10.334">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Tests.Ui.Auth Ui" name="Test User Login UI Success" time="10.359">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="UI Tests for Authentication"/>
+</properties>
+</testsuite>
+<testsuite name="Todos Ui" tests="3" errors="0" failures="3" skipped="0" time="31.068" timestamp="2025-09-17T16:23:18.723389">
+<testcase classname="Tests.Ui.Todos Ui" name="Test Add Todo Item" time="10.235">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Tests.Ui.Todos Ui" name="Test Mark Todo Complete" time="10.417">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Tests.Ui.Todos Ui" name="Test Delete Todo" time="10.402">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="UI Tests for Todo Functionality"/>
+</properties>
+</testsuite>
+</testsuite>
+</testsuite>

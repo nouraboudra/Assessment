@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Ui" tests="16" errors="0" failures="16" skipped="0" time="167.383" timestamp="2025-09-17T16:12:54.556817">
+<testsuite name="Auth Ui" tests="7" errors="0" failures="7" skipped="0" time="73.623" timestamp="2025-09-17T16:12:54.614138">
+<testcase classname="Ui.Auth Ui" name="Test User Registration UI Success" time="10.661">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Auth Ui" name="Test User Login UI Success" time="10.447">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Auth Ui" name="Test Registration Password Mismatch" time="10.591">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Auth Ui" name="Test Login Invalid Credentials" time="10.242">
+<failure message="Link with locator 'LOGIN' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Auth Ui" name="Test Registration Empty Fields" time="10.268">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Auth Ui" name="Test Logout Functionality" time="10.286">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Auth Ui" name="Test Session Persistence" time="10.389">
+<failure message="Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="UI Tests for Authentication"/>
+</properties>
+</testsuite>
+<testsuite name="Todos Ui" tests="9" errors="0" failures="9" skipped="0" time="93.699" timestamp="2025-09-17T16:14:08.238445">
+<testcase classname="Ui.Todos Ui" name="Test Add Todo Item" time="10.339">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Add Multiple Todos" time="10.333">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Mark Todo Complete" time="10.336">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Delete Todo" time="11.097">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Edit Todo" time="10.501">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Todo Persistence After Refresh" time="10.216">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Empty Todo Validation" time="10.261">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Long Todo Text" time="10.274">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<testcase classname="Ui.Todos Ui" name="Test Dark Mode Toggle" time="10.318">
+<failure message="Setup failed:&#10;Link with locator 'REGISTER' not found." type="AssertionError"/>
+</testcase>
+<properties>
+<property name="Documentation" value="UI Tests for Todo Functionality"/>
+</properties>
+</testsuite>
+</testsuite>
